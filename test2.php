@@ -276,18 +276,7 @@ if ($con) {
                     ]
                     toggle_field(arr, true);
 
-                    // $("#age").attr('disabled', true);
-                    // $("#capsule_select").attr('disabled', true);
-                    // $("#smoke_select").attr('disabled', true);
-                    // $("#blueberry_select").attr('disabled', true);
-                    // $("#primary_select").attr('disabled', true);
-                    // $("#secondary_select").attr('disabled', true);
-                    // $("#profession_select").attr('disabled', true);
-                    // $("#jbs_select").attr('disabled', true);
-                    // $("#express_select").attr('disabled', true);
-                    // $("#call_status_select").attr('disabled', true);
-                    // $("#call_remarks_select").attr('disabled', true);
-                    // $("#call_check_select").attr('disabled', true);
+
 
                 }
                 // conducted
@@ -300,18 +289,6 @@ if ($con) {
                         "#profession_select", "#jbs_select", "#express_select", "#call_status_select", "#call_remarks_select", "#call_check_select"
                     ]
                     toggle_field(arr, true);
-                    // $("#conducted_by_representative").attr('disabled', true);
-                    // $("#capsule_select").attr('disabled', true);
-                    // $("#smoke_select").attr('disabled', true);
-                    // $("#blueberry_select").attr('disabled', true);
-                    // $("#primary_select").attr('disabled', true);
-                    // $("#secondary_select").attr('disabled', true);
-                    // $("#profession_select").attr('disabled', true);
-                    // $("#jbs_select").attr('disabled', true);
-                    // $("#express_select").attr('disabled', true);
-                    // $("#call_status_select").attr('disabled', true);
-                    // $("#call_remarks_select").attr('disabled', true);
-                    // $("#call_check_select").attr('disabled', true);
 
                 }
 
@@ -331,13 +308,6 @@ if ($con) {
                     ]
                     toggle_field(arr, true);
 
-                    // $("#secondary_select").attr('disabled', true);
-                    // $("#profession_select").attr('disabled', true);
-                    // $("#jbs_select").attr('disabled', true);
-                    // $("#express_select").attr('disabled', true);
-                    // $("#call_status_select").attr('disabled', true);
-                    // $("#call_remarks_select").attr('disabled', true);
-                    // $("#call_check_select").attr('disabled', true);
                 } else if (primary_brand != 15 && primary_brand != -1) {
 
                     var arr = [
@@ -346,13 +316,6 @@ if ($con) {
                     ]
                     toggle_field(arr, false);
 
-                    // $("#secondary_select").attr('disabled', false);
-                    // $("#profession_select").attr('disabled', false);
-                    // $("#jbs_select").attr('disabled', false);
-                    // $("#express_select").attr('disabled', false);
-                    // $("#call_status_select").attr('disabled', false);
-                    // $("#call_remarks_select").attr('disabled', false);
-                    // $("#call_check_select").attr('disabled', false);
                 }
                 if (call_remarks == 1 && call_remarks != -1) {
 
@@ -363,19 +326,6 @@ if ($con) {
                     toggle_field(arr, false);
 
 
-                    // $("#name_select").attr('disabled', false);
-                    // $("#age_select").attr('disabled', false);
-                    // $("#conducted_select").attr('disabled', false);
-                    // $("#capsule_select").attr('disabled', false);
-                    // $("#smoke_select").attr('disabled', false);
-                    // $("#blueberry_select").attr('disabled', false);
-                    // $("#primary_select").attr('disabled', false);
-                    // $("#secondary_select").attr('disabled', false);
-                    // $("#profession_select").attr('disabled', false);
-                    // $("#jbs_select").attr('disabled', false);
-                    // $("#express_select").attr('disabled', false);
-                    // $("#call_status_select").attr('disabled', false);
-                    // $("#call_check_select").attr('disabled', false);
                 } else if (call_remarks != 1 && call_remarks != -1) {
 
                     var arr = [
@@ -383,19 +333,7 @@ if ($con) {
                     ]
                     toggle_field(arr, true);
 
-                    // $("#name_select").attr('disabled', true);
-                    // $("#age_select").attr('disabled', true);
-                    // $("#conducted_select").attr('disabled', true);
-                    // $("#capsule_select").attr('disabled', true);
-                    // $("#smoke_select").attr('disabled', true);
-                    // $("#blueberry_select").attr('disabled', true);
-                    // $("#primary_select").attr('disabled', true);
-                    // $("#secondary_select").attr('disabled', true);
-                    // $("#profession_select").attr('disabled', true);
-                    // $("#jbs_select").attr('disabled', true);
-                    // $("#express_select").attr('disabled', true);
-                    // $("#call_status_select").attr('disabled', true);
-                    // $("#call_check_select").attr('disabled', true);
+
                 }
 
             });
