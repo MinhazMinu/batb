@@ -1,0 +1,30 @@
+$('#name_select').change(
+                function() {
+                    var val1 = $('#name_select option:selected').val();
+
+                    if (val1 == 1) {
+                        $("#name").attr('disabled', false);
+                    } else {
+                        $("#name").attr('disabled', true);
+                    }
+                }
+            );
+
+            $('#age_select').change(function() {
+                var val1 = $('#age_select option:selected').val();
+                if (val1 == 1) {
+                    $("#age").attr('disabled', false);
+                } else {
+                    $("#age").attr('disabled', true);
+                    $("#conducted_by_representative").val("2");
+                }
+            });
+
+            $('#conducted_select').change(function() {
+                var val1 = $('#conducted_select option:selected').val();
+                if (val1 == 1) {
+                    $("#conducted_by_representative").attr('disabled', false);
+                } else {
+                    $("#conducted_by_representative").attr('disabled', true);
+                }
+            });
