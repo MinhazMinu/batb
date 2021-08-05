@@ -25,8 +25,9 @@ if ($_POST) {
         $capsule_select = $_POST['capsule_select'];
         $smoke_select  = $_POST['smoke_select'];
         $blueberry_select  = $_POST['blueberry_select'];
-        $primary_select  = $_POST['primary_select'];
+        $primary_select  = $_POST['primary_select'] == "Others" ? $_POST['primary_others'] : $_POST['primary_select'];
         $secondary_select  = $_POST['secondary_select'];
+        $secondary_select  = $_POST['secondary_select'] == "Others" ? $_POST['secondary_others'] : $_POST['secondary_select'];
         $profession_select  = $_POST['profession_select'];
         $jbs_select  = $_POST['jbs_select'];
         $express_select  = $_POST['express_select'];
@@ -87,7 +88,7 @@ if ($_POST) {
 
     <div class="container">
         <div class="page-header">Insert Form </div>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="form" name="data_input">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="form" name="form">
             <table class="table table-hover table-striped   table-responsive">
                 <tr>
                     <th>Field</th>
@@ -400,39 +401,9 @@ if ($_POST) {
                     toggle_field(arr, true);
                 }
 
-
-                /*
-
-                if (call_remarks == "Success" && call_remarks != -1) {
-
-
-                    var arr = [
-                        "#name_select", "#age_select", "#conducted_select", "#capsule_select", "#smoke_select", "#blueberry_select", "#primary_select", "#secondary_select", "#profession_select", "#jbs_select", "#express_select", "#call_status_select", "#call_remarks_select", "#call_check_select"
-                    ]
-                    toggle_field(arr, false);
-
-                } else if (call_remarks != "Success" && call_remarks != -1) {
-
-                    var arr = [
-                        "#name_select", "#age_select", "#conducted_select", "#capsule_select", "#smoke_select", "#blueberry_select", "#primary_select", "#secondary_select", "#profession_select", "#jbs_select", "#express_select", "#call_status_select", "#call_check_select"
-                    ]
-                    toggle_field(arr, true);
-                }
-                
-                <!-- <option value="Success">Success</option>
-                            <option value="Not Interested">Not Interested</option>
-                            <option value="Mobile Off">Mobile Off</option>
-                            <option value="2">No Answer</option>
-                            <option value="Call Received by Others">Call Received by Others</option>
-                            <option value="Invalid Number">Invalid Number</option> -->
-
-                */
-
-
-
             });
             $("#submit_button").click(function() {
-                alert("Handler for .click() called.");
+                $("#form").submit();
             });
         });
 
