@@ -79,20 +79,16 @@ if ($_POST) {
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <style>
-        .error {
-            outline: 1px solid red;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
     <title>Hello, world!</title>
 </head>
 
 <body>
 
     <div class="container">
-        <div class="page-header">Insert Form</div>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="form">
-            <table class="table table-hover table-striped table-info table-bordered">
+        <div class="page-header">Insert Form </div>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="form" name="data_input">
+            <table class="table table-hover table-striped   table-responsive">
                 <tr>
                     <th>Field</th>
                     <th>Yes/No</th>
@@ -196,7 +192,7 @@ if ($_POST) {
                             <option value="Others">Others</option>
                         </select>
                     </td>
-                    <td></td>
+                    <td><input type="text" name="primary_others" id="primary_others" class="form-control" disabled="disabled"></td>
                 </tr>
                 <tr>
                     <td>Secondary Brand</td>
@@ -220,28 +216,21 @@ if ($_POST) {
                             <option value="Others">Others</option>
                         </select>
                     </td>
-                    <td></td>
+                    <td><input type="text" name="secondary_others" id="secondary_others" class="form-control" disabled="disabled">
+                    </td>
                 </tr>
                 <tr>
                     <td>Profession</td>
-                    <td><select class="form-select form-select-sm" id="profession_select" name="profession_select">
-                            <option value="-1">Select</option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                        </select>
+                    <td>
                     </td>
-                    <td></td>
+                    <td><input type="text" name="profession_select" id="profession_select" class="form-control"></td>
                 </tr>
                 <tr>
                     <td>Job / Business / Study</td>
                     <td>
-                        <select class="form-select form-select-sm" id="jbs_select" name="jbs_select">
-                            <option value="-1">Select</option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                        </select>
+
                     </td>
-                    <td></td>
+                    <td><input type="text" name="jbs_select" id="jbs_select" class="form-control"></td>
                 </tr>
                 <tr>
                     <td>Express Thanks</td>
@@ -271,12 +260,12 @@ if ($_POST) {
                     <td>
                         <select class="form-select form-select-sm" id="call_remarks_select" name="call_remarks_select">
                             <option value="-1"> Select</option>
-                            <option value="Success">Success</option>
+                            <!-- <option value="Success">Success</option>
                             <option value="Not Interested">Not Interested</option>
                             <option value="Mobile Off">Mobile Off</option>
                             <option value="2">No Answer</option>
                             <option value="Call Received by Others">Call Received by Others</option>
-                            <option value="Invalid Number">Invalid Number</option>
+                            <option value="Invalid Number">Invalid Number</option> -->
                         </select>
                     </td>
                     <td></td>
@@ -296,7 +285,7 @@ if ($_POST) {
                 <tr>
                     <td></td>
                     <th colspan="2">
-                        <input type="submit" value="Submit Data" class="btn btn-lg btn-primary m-5 text-center">
+                        <input type="button" id="submit_button" value="Submit Data" class="btn btn-lg btn-primary m-5 text-center">
                     </th>
                 </tr>
             </table>
@@ -315,6 +304,7 @@ if ($_POST) {
                 var age = $('#age_select option:selected').val();
                 var conducted = $('#conducted_select option:selected').val();
                 var primary_brand = $('#primary_select').val();
+                var secondary_brand = $('#secondary_select').val();
                 var call_remarks = $('#call_remarks_select').val();
 
                 // function
@@ -329,6 +319,7 @@ if ($_POST) {
                     $("#name").attr('disabled', false);
 
                 } else if (name == "No") {
+                    $("#name").val("");
                     $("#name").attr('disabled', true);
                 }
                 // age
@@ -340,10 +331,10 @@ if ($_POST) {
                     toggle_field(arr, false);
 
                 } else if ((age == "No" || age == "Under 18") && age != -1) {
-
+                    $("#age").val("");
                     var arr = [
                         "#age", "#capsule_select", "#smoke_select", "#blueberry_select", "#primary_select", "#secondary_select",
-                        "#profession_select", "#jbs_select", "#express_select", "#call_status_select", "#call_remarks_select", "#call_check_select"
+                        "#profession_select", "#jbs_select", "#express_select", "#call_check_select"
                     ]
                     toggle_field(arr, true);
 
@@ -355,7 +346,7 @@ if ($_POST) {
 
                     var arr = [
                         "#conducted_by_representative", "#capsule_select", "#smoke_select", "#blueberry_select", "#primary_select", "#secondary_select",
-                        "#profession_select", "#jbs_select", "#express_select", "#call_status_select", "#call_remarks_select", "#call_check_select"
+                        "#profession_select", "#jbs_select", "#express_select", "#call_check_select"
                     ]
                     toggle_field(arr, true);
 
@@ -365,16 +356,21 @@ if ($_POST) {
 
                 if ((name == "No" && age == "No") && name != -1 && age != -1) {
                     $("#conducted_select").val("No");
+                    var arr = [
+                        "#conducted_by_representative", "#capsule_select", "#smoke_select", "#blueberry_select", "#primary_select", "#secondary_select",
+                        "#profession_select", "#jbs_select", "#express_select", "#call_check_select"
+                    ]
+                    toggle_field(arr, true);
 
                 } else {
-                    $("#conducted_select").val(-1);
+
                 }
 
                 if (primary_brand == "Does not smoke" && primary_brand != -1) {
 
                     var arr = [
                         "#secondary_select",
-                        "#profession_select", "#jbs_select", "#express_select", "#call_status_select", "#call_remarks_select", "#call_check_select"
+                        "#profession_select", "#jbs_select", "#express_select", "#call_check_select"
                     ]
                     toggle_field(arr, true);
                 } else if (primary_brand != "Does not smoke" && primary_brand != -1) {
@@ -385,6 +381,28 @@ if ($_POST) {
                     ]
                     toggle_field(arr, false);
                 }
+
+                if (primary_brand == "Others" && primary_brand != -1) {
+                    var arr = ["#primary_others"]
+                    toggle_field(arr, false);
+                } else if (primary_brand != "Others" && primary_brand != -1) {
+                    $('#primary_others').val("");
+                    var arr = ["#primary_others"]
+
+                    toggle_field(arr, true);
+                }
+                if (secondary_brand == "Others" && secondary_brand != -1) {
+                    var arr = ["#secondary_others"]
+                    toggle_field(arr, false);
+                } else if (secondary_brand != "Others" && secondary_brand != -1) {
+                    $('#secondary_others').val("");
+                    var arr = ["#secondary_others"]
+                    toggle_field(arr, true);
+                }
+
+
+                /*
+
                 if (call_remarks == "Success" && call_remarks != -1) {
 
 
@@ -400,48 +418,50 @@ if ($_POST) {
                     ]
                     toggle_field(arr, true);
                 }
+                
+                <!-- <option value="Success">Success</option>
+                            <option value="Not Interested">Not Interested</option>
+                            <option value="Mobile Off">Mobile Off</option>
+                            <option value="2">No Answer</option>
+                            <option value="Call Received by Others">Call Received by Others</option>
+                            <option value="Invalid Number">Invalid Number</option> -->
+
+                */
+
+
 
             });
-            // Wait for the DOM to be ready
-            $(function() {
-                // Initialize form validation on the registration form.
-                // It has the name attribute "registration"
-                $("form[name='registration']").validate({
-                    // Specify validation rules
-                    rules: {
-                        // The key name on the left side is the name attribute
-                        // of an input field. Validation rules are defined
-                        // on the right side
-                        firstname: "required",
-                        lastname: "required",
-                        email: {
-                            required: true,
-                            // Specify that email should be validated
-                            // by the built-in "email" rule
-                            email: true
-                        },
-                        password: {
-                            required: true,
-                            minlength: 5
-                        }
-                    },
-                    // Specify validation error messages
-                    messages: {
-                        firstname: "Please enter your firstname",
-                        lastname: "Please enter your lastname",
-                        password: {
-                            required: "Please provide a password",
-                            minlength: "Your password must be at least 5 characters long"
-                        },
-                        email: "Please enter a valid email address"
-                    },
-                    // Make sure the form is submitted to the destination defined
-                    // in the "action" attribute of the form when valid
-                    submitHandler: function(form) {
-                        form.submit();
-                    }
-                });
+            $("#submit_button").click(function() {
+                alert("Handler for .click() called.");
             });
+        });
+
+        $(document).ready(function() {
+
+            $("#call_status_select").change(function() {
+
+                var el = $("#call_status_select option:selected").val();
+
+
+                if (el == "Call Received") {
+                    $("#call_remarks_select *").remove();
+                    var add = "<option value='Success' >Success</option>" +
+                        "<option value='Call Received by Others' >Call Received by Others</option>" +
+                        "<option value='Call on later' >Call on later</option>" +
+                        "<option value='Not interested' >Not interested</option>";
+                    $("#call_remarks_select").append(add);
+                } else if (el == "Not Reached") {
+                    $("#call_remarks_select *").remove();
+                    var add = "<option value='Mobile Off' >Mobile Off</option>" +
+                        "<option value='Invalid' >Invalid</option>";
+                    $("#call_remarks_select").append(add);
+                } else if (el == "Ringing") {
+                    $("#call_remarks_select *").remove();
+                    var add = "<option value='No Answer' >No Answer</option>";
+                    $("#call_remarks_select").append(add);
+                }
+            });
+
         });
     </script>
 
